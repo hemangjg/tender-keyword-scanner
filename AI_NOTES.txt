@@ -1,0 +1,29 @@
+AI USAGE NOTES
+==============
+I used an AI coding assistant to help plan and build this project. Below are 3 of the prompts I used and what I did with the output.
+
+1) Planning prompt
+   "Read the Tender_Keyword_Scanner_Assignment.pdf brief, the 3 GeM PDFs, keywords.csv and sample_tender_scan_report.xlsx.
+    Propose a build plan: stack, matching rules, scoring, Excel layout, UI, tests, deliverables and a timeline."
+   Output: a plan for React (Vite) + Express, multer, pdf-parse, mammoth and exceljs, with distinct-keyword scoring.
+   Used: MODIFIED. I approved the plan but told it not to add any extra "hydraulic nut" keywords. The default list stays
+   exactly as in the brief. I also chose to use the sample report's labels (Related / Possible / Not Related).
+
+2) Matching prompt
+   "Write a keyword matcher that is case-insensitive, matches whole words only (so 'extension' is not a hit for 'tension'),
+    allows flexible hyphens and whitespace (pre-tensioning / pre tensioning / pretensioning), handles plurals and suffix
+    variants (wrench/wrenches, tensioning/tensioned) and records the page and a context snippet for each hit. Add Jest tests,
+    including the extension trap."
+   Used: MODIFIED. One generated test wrongly expected "pretension-free" NOT to match "Pre-tensioning". It is a real
+   pre-tension mention, so I fixed the test rather than the matcher. I also raised the snippet limit for GeM's long
+   eligibility blocks and checked every regex against the real GeM text.
+
+3) Excel prompt
+   "Using exceljs, recreate sample_tender_scan_report.xlsx exactly: sheet 'Tender Scan Report', the same 24 columns and widths,
+    header fill 1E3A5F with bold white text, frozen at B2, wrap text, verdict fills D9F2D9 / FDEBD3 / F2F2F2, 'Not Found'
+    for missing fields and '(none found)' when there are no keywords. Add a second 'Keyword Hits' sheet."
+   Used: MOSTLY AS-IS. I read the sample with openpyxl to get the exact widths and colours, then checked the output in a test.
+   I wrote the GeM metadata regexes (bid number, organisation, dates, EMD, buyer email) by hand after reading the extracted
+   PDF text, because pdf-parse joins the Hindi and English labels with their values.
+
+Everything was verified with the Jest suite (20 tests) and by scanning the 3 real GeM tenders and 3 self-made samples.
