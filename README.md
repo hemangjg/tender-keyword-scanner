@@ -111,3 +111,7 @@ Example reports are in `docs/` (`example_report_GeM_tenders.xlsx` and `example_r
 - Scanned or image-only PDFs have no text layer, so they need OCR, which isn't included. The UI shows a warning when almost no text is extracted.
 - Scans are kept in memory, last 50, so a restart clears download links. MongoDB scan history would be the next step.
 - pdf-parse 1.1.1 uses an older pdf.js and can fail on some unusual PDFs. Each file has its own error handling, so one bad file doesn't stop the batch.
+
+## Demo
+
+Screen recording of upload → scan → Excel download: [docs/demo.mp4](docs/demo.mp4)
