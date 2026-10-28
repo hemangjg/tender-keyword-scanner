@@ -114,4 +114,6 @@ Example reports are in `docs/` (`example_report_GeM_tenders.xlsx` and `example_r
 
 ## Demo
 
-Screen recording of upload → scan → Excel download: [docs/demo.mp4](docs/demo.mp4)
+[![Demo: upload → scan → Excel download](docs/demo.gif)](docs/demo.mp4)
+
+Preview shown at 2× speed. Click it for the full recording ([docs/demo.mp4](docs/demo.mp4)).
